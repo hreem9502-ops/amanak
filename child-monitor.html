@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>حماية طفلك | أمانك</title>
+  <meta name="description" content="راقب نشاط جهاز طفلك واحصل على تنبيهات فورية">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234F41D6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="page-wrap">
+  <main class="page-content">
+
+    <!-- ===== الترويسة ===== -->
+    <div class="page-header primary-grad">
+      <div class="container">
+        <a class="back-link" href="index.html">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          الرئيسية
+        </a>
+        <div data-animate>
+          <h1 class="page-title">حماية طفلك</h1>
+          <p class="page-subtitle">راقب نشاط جهاز طفلك واحصل على تنبيهات فورية</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container" style="display:flex; flex-direction:column; gap:1rem; padding-bottom:2rem;">
+
+      <!-- 🖼️ صورة توضيحية جاهزة (اختياري): احذف علامات التعليق لعرضها أعلى الصفحة -->
+      <!--
+      <div style="border-radius:1rem; overflow:hidden; border:1px solid var(--border);">
+        <img src="images/child-monitor-illustration.png" alt="حماية طفلك">
+      </div>
+      -->
+
+      <!-- ===== بطاقة ربط الأجهزة ===== -->
+      <section class="link-card" data-animate>
+        <div class="link-card-header">
+          <div class="link-card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 17H7A5 5 0 0 1 7 7h2"/><path d="M15 7h2a5 5 0 1 1 0 10h-2"/><line x1="8" x2="16" y1="12" y2="12"/></svg>
+          </div>
+          <div>
+            <h3 class="link-card-title">ربط الأجهزة</h3>
+            <p class="link-card-sub">اربط جوالك بجوال طفلك لتصلك التنبيهات</p>
+          </div>
+        </div>
+
+        <div class="tab-row">
+          <button class="tab-btn active" data-tab="parent">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+            جوال الوالد
+          </button>
+          <button class="tab-btn" data-tab="child">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+            جوال الطفل
+          </button>
+        </div>
+
+        <div>
+          <div class="link-info" id="linkInfo">📱 أدخل رقم جوالك لربطه بجوال طفلك وتصلك التنبيهات فوراً.</div>
+          <div class="link-form">
+            <input type="tel" id="phoneInput" class="phone-input" placeholder="05xxxxxxxx" maxlength="10" dir="ltr" aria-label="رقم الجوال">
+            <button class="btn-link" id="linkBtn" disabled>ربط</button>
+          </div>
+          <p id="linkStatus" style="display:none; margin-top:0.5rem; font-size:0.75rem;"></p>
+        </div>
+      </section>
+
+      <!-- ===== بطاقة حالة المراقبة ===== -->
+      <section class="status-card" data-animate>
+        <div class="status-header">
+          <div class="status-id">
+            <div class="status-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+            </div>
+            <div>
+              <h3 class="status-title">حالة المراقبة</h3>
+              <div class="status-live">
+                <span class="pulse-dot" id="pulseDot"></span>
+                <span class="status-live-text" id="monitorStatusText">المراقبة نشطة</span>
+              </div>
+            </div>
+          </div>
+          <button class="btn-stop" id="stopMonitorBtn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M17 17H4a1 1 0 0 1-.74-1.673C4.59 13.956 6 12.499 6 8a6 6 0 0 1 .258-1.742"/><path d="m2 2 20 20"/><path d="M8.668 3.01A6 6 0 0 1 18 8c0 2.687.77 4.653 1.707 6.05"/></svg>
+            <span>إيقاف</span>
+          </button>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-box">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h.01"/><path d="M2 8.82a15 15 0 0 1 20 0"/><path d="M5 12.859a10 10 0 0 1 14 0"/><path d="M8.5 16.429a5 5 0 0 1 7 0"/></svg>
+            <p class="stat-value" id="activeStat">1</p>
+            <p class="stat-label">تنبيه نشط</p>
+          </div>
+          <div class="stat-box">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+            <p class="stat-value" id="resolvedStat">4</p>
+            <p class="stat-label">تم حلها</p>
+          </div>
+          <div class="stat-box">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4F41D6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12h.01"/><path d="M15 12h.01"/><path d="M10 16c.5.3 1.2.5 2 .5s1.5-.2 2-.5"/><path d="M19 6.3a9 9 0 0 1 1.8 3.9 2 2 0 0 1 0 3.6 9 9 0 0 1-17.6 0 2 2 0 0 1 0-3.6A9 9 0 0 1 12 3c2 0 3.5 1.1 3.5 2.5s-.9 2.5-2 2.5c-.8 0-1.5-.4-1.5-1"/></svg>
+            <p class="stat-value">4</p>
+            <p class="stat-label">أطفال</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== زر تنبيه تجريبي ===== -->
+      <button class="btn-dashed" id="addAlertBtn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+        إضافة تنبيه تجريبي
+      </button>
+
+      <!-- ===== التنبيهات النشطة ===== -->
+      <section>
+        <h2 class="alerts-heading" id="activeAlertsTitle">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/></svg>
+          تنبيهات نشطة (<span id="activeAlertsCount">1</span>)
+        </h2>
+        <div class="alert-list" id="activeAlerts">
+
+          <div class="alert-card">
+            <div class="alert-inner">
+              <div class="alert-icon red">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+              </div>
+              <div class="alert-body">
+                <div class="alert-name-row">
+                  <span class="alert-name">دلال</span>
+                  <span class="badge red">عالي</span>
+                </div>
+                <p class="alert-desc">تم رصد محتوى مشبوه على الجهاز</p>
+                <div class="alert-footer">
+                  <span class="alert-time">٣ سبتمبر، ٠٦:٠٦ ص</span>
+                  <button class="btn-resolve">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                    تم الحل
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ===== التنبيهات السابقة ===== -->
+      <section>
+        <h2 class="alerts-heading muted-h">تنبيهات سابقة</h2>
+        <div class="alert-list" id="previousAlerts">
+
+          <div class="alert-card resolved">
+            <div class="alert-inner">
+              <div class="alert-icon orange">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div class="alert-body">
+                <div class="alert-name-row">
+                  <span class="alert-name">غنى</span>
+                  <span class="badge red">عالي</span>
+                  <span class="badge emerald">تم الحل</span>
+                </div>
+                <p class="alert-desc">تعدى الوقت</p>
+                <div class="alert-footer">
+                  <span class="alert-time">٩ أبريل، ١١:٥٩ ص</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert-card resolved">
+            <div class="alert-inner">
+              <div class="alert-icon orange">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div class="alert-body">
+                <div class="alert-name-row">
+                  <span class="alert-name">سارة</span>
+                  <span class="badge emerald">منخفض</span>
+                  <span class="badge emerald">تم الحل</span>
+                </div>
+                <p class="alert-desc">سارة تجاوزت وقت الشاشة المحدد (3 ساعات)</p>
+                <div class="alert-footer">
+                  <span class="alert-time">٧ أبريل، ٠١:٠٤ م</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert-card resolved">
+            <div class="alert-inner">
+              <div class="alert-icon red">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+              </div>
+              <div class="alert-body">
+                <div class="alert-name-row">
+                  <span class="alert-name">أحمد</span>
+                  <span class="badge red">عالي</span>
+                  <span class="badge emerald">تم الحل</span>
+                </div>
+                <p class="alert-desc">تم رصد محاولة دخول لموقع محجوب</p>
+                <div class="alert-footer">
+                  <span class="alert-time">٧ أبريل، ٠١:٠٤ م</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert-card resolved">
+            <div class="alert-inner">
+              <div class="alert-icon blue">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+              </div>
+              <div class="alert-body">
+                <div class="alert-name-row">
+                  <span class="alert-name">أحمد</span>
+                  <span class="badge orange">متوسط</span>
+                  <span class="badge emerald">تم الحل</span>
+                </div>
+                <p class="alert-desc">تم تثبيت تطبيق غير معروف على جهاز أحمد</p>
+                <div class="alert-footer">
+                  <span class="alert-time">٧ أبريل، ٠١:٠٤ م</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ===== المميزات القادمة ===== -->
+      <section>
+        <h2 class="alerts-heading" style="font-size:0.875rem;">مميزات قادمة</h2>
+        <div class="upcoming-grid">
+
+          <div class="upcoming-card" data-animate>
+            <div class="upcoming-icon orange">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <h4 class="upcoming-title">حد وقت الشاشة</h4>
+            <p class="upcoming-desc">تحديد ساعات استخدام الجهاز يومياً</p>
+            <span class="soon-badge">قريباً</span>
+          </div>
+
+          <div class="upcoming-card" data-animate>
+            <div class="upcoming-icon primary">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+            </div>
+            <h4 class="upcoming-title">فلترة المواقع</h4>
+            <p class="upcoming-desc">حجب المواقع غير المناسبة تلقائياً</p>
+            <span class="soon-badge">قريباً</span>
+          </div>
+
+          <div class="upcoming-card" data-animate>
+            <div class="upcoming-icon red">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15V5a2 2 0 0 0-2-2H9"/><path d="m2 2 20 20"/><path d="M3.6 3.6c-.4.3-.6.8-.6 1.4v16l4-4h10"/></svg>
+            </div>
+            <h4 class="upcoming-title">فلترة الرسائل</h4>
+            <p class="upcoming-desc">كشف الكلمات المشبوهة في المحادثات</p>
+            <span class="soon-badge">قريباً</span>
+          </div>
+
+          <div class="upcoming-card" data-animate>
+            <div class="upcoming-icon blue">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M10 4v4"/><path d="M2 8h20"/><path d="M6 4v4"/></svg>
+            </div>
+            <h4 class="upcoming-title">إدارة التطبيقات</h4>
+            <p class="upcoming-desc">السماح أو حجب تطبيقات بعينها</p>
+            <span class="soon-badge">قريباً</span>
+          </div>
+
+          <div class="upcoming-card" data-animate>
+            <div class="upcoming-icon emerald">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <h4 class="upcoming-title">تتبع الموقع</h4>
+            <p class="upcoming-desc">معرفة مكان طفلك في أي وقت</p>
+            <span class="soon-badge">قريباً</span>
+          </div>
+
+          <div class="upcoming-card" data-animate>
+            <div class="upcoming-icon muted">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <h4 class="upcoming-title">قفل الجهاز عن بُعد</h4>
+            <p class="upcoming-desc">قفل جهاز الطفل عند الطوارئ</p>
+            <span class="soon-badge">قريباً</span>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ===== شريط التنقل السفلي ===== -->
+  <nav class="bottom-nav" aria-label="التنقل الرئيسي">
+    <div class="bottom-nav-inner">
+      <div class="nav-pill">
+        <div class="nav-items">
+          <a class="nav-item" href="index.html">
+            <span class="nav-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+            </span>
+            <span class="nav-label">الرئيسية</span>
+          </a>
+          <a class="nav-item" href="app-safety.html">
+            <span class="nav-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+            </span>
+            <span class="nav-label">التطبيقات</span>
+          </a>
+          <a class="nav-item active" href="child-monitor.html" aria-current="page">
+            <span class="nav-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12h.01"/><path d="M15 12h.01"/><path d="M10 16c.5.3 1.2.5 2 .5s1.5-.2 2-.5"/><path d="M19 6.3a9 9 0 0 1 1.8 3.9 2 2 0 0 1 0 3.6 9 9 0 0 1-17.6 0 2 2 0 0 1 0-3.6A9 9 0 0 1 12 3c2 0 3.5 1.1 3.5 2.5s-.9 2.5-2 2.5c-.8 0-1.5-.4-1.5-1"/></svg>
+            </span>
+            <span class="nav-label">طفلك</span>
+          </a>
+          <a class="nav-item" href="camera.html">
+            <span class="nav-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+            </span>
+            <span class="nav-label">الكاميرا</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
