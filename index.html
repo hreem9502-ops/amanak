@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>أمانك</title>
   <meta name="description" content="أمانك — حمايتك وحماية عائلتك بسرية وأمان تامَّين">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234F41D6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z'/%3E%3C/svg%3E">
+  <!-- 🎨 أيقونة التبويب: حرف (أ) — يمكن استبدالها لاحقاً بأيقونة الشعار النهائي -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%234F41D6'/%3E%3Ctext x='32' y='45' font-size='36' font-weight='bold' text-anchor='middle' fill='white' font-family='Tajawal, Arial, sans-serif'%3Eأ%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -14,11 +15,9 @@
   <main class="page-content">
 
     <!-- ===== قسم البطل ===== -->
+    <!-- ✔ حُذفت أيقونة الدرع بناءً على الملاحظات — يبقى اسم أمانك والنص بعده فقط -->
     <section class="hero">
       <div class="hero-inner" data-animate>
-        <div class="hero-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
-        </div>
         <h1 class="hero-title">أمانك</h1>
         <p class="hero-subtitle">حمايتك وحماية عائلتك بسرية وأمان تامَّين</p>
       </div>
@@ -81,115 +80,80 @@
         </div>
         -->
 
-        <!-- ===== قسم فيديو شرح البرنامج (فيديو حقيقي بصوت عربي) ===== -->
+        <!-- ===== بطاقة سجل المهام ===== -->
+        <a class="feature-card emerald" href="tasks.html" data-animate>
+          <div class="feature-card-inner">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg>
+            </div>
+            <div class="feature-text">
+              <h3 class="feature-title">سجل المهام</h3>
+              <p class="feature-desc">تصميم الشعار وتنفيذه والتسجيلات قبل وبعد التعديل</p>
+            </div>
+            <svg class="feature-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+          </div>
+        </a>
+
+        <!-- ===== قسم باركود فيديو الشرح (باركود فقط بدون فيديو مدمج) ===== -->
         <section class="video-card" data-animate>
           <div class="video-head">
             <div class="video-head-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 8-6 4 6 4V8Z"/><rect x="2" y="6" width="14" height="12" rx="2" ry="2"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="5" height="5" x="3" y="3" rx="1"/><rect width="5" height="5" x="16" y="3" rx="1"/><rect width="5" height="5" x="3" y="16" rx="1"/><path d="M21 16h-3v3"/><path d="M21 21h-3"/><path d="M8 3v3H3"/></svg>
             </div>
             <div>
               <h3 class="link-card-title">فيديو شرح البرنامج</h3>
-              <p class="link-card-sub">فيديو تعريفي حقيقي بصوت عربي يشرح موقع أمانك ومميزاته</p>
+              <p class="link-card-sub">امسحي الباركود بالجوال لمشاهدة فيديو شرح موقع أمانك على يوتيوب</p>
             </div>
-            <span class="badge emerald video-dur" id="videoDurationBadge">فيديو</span>
+            <span class="badge emerald">باركود</span>
           </div>
 
-          <div class="player-wrap">
-            <video id="amanakVideo" class="main-player" poster="images/video-poster.png" preload="metadata" playsinline>
-              <source id="videoSource" src="media/amanak-intro-1080p.mp4" type="video/mp4">
-              متصفحك لا يدعم تشغيل الفيديو.
-            </video>
-            <button class="player-big-play" id="bigPlayBtn" aria-label="تشغيل الفيديو">
-              <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-            </button>
-            <div class="player-subs" id="playerSubs" hidden></div>
-            <span class="player-brand-badge">أمانك</span>
-          </div>
-
-          <!-- خيارات المشغل -->
-          <div class="player-options">
-            <div class="opt-group">
-              <span class="opt-label">الجودة</span>
-              <div class="opt-buttons" id="qualityBtns" role="group" aria-label="اختيار الجودة">
-                <button type="button" data-quality="1080p" class="active">1080p</button>
-                <button type="button" data-quality="720p">720p خفيف</button>
-              </div>
-            </div>
-
-            <div class="opt-group">
-              <span class="opt-label">السرعة</span>
-              <div class="opt-buttons" id="speedBtns" role="group" aria-label="سرعة التشغيل">
-                <button type="button" data-speed="0.75">0.75×</button>
-                <button type="button" data-speed="1" class="active">عادي</button>
-                <button type="button" data-speed="1.25">1.25×</button>
-                <button type="button" data-speed="1.5">1.5×</button>
-              </div>
-            </div>
-
-            <div class="opt-group">
-              <span class="opt-label">الترجمة</span>
-              <div class="opt-buttons">
-                <button type="button" id="subsToggle" aria-pressed="false">إظهار النص</button>
-              </div>
-            </div>
-
-            <div class="opt-group">
-              <span class="opt-label">خيارات</span>
-              <div class="opt-buttons">
-                <button type="button" id="loopToggle" aria-pressed="false">تكرار</button>
-                <a class="opt-btn opt-anchor" id="downloadBtn" href="media/amanak-intro-1080p.mp4" download="amanak-intro.mp4">تحميل الفيديو</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="video-row">
-            <div class="qr-box">
-              <img src="images/qr-video.png" alt="باركود فيديو الشرح">
-              <p class="qr-label">امسح الباركود بالجوال لمشاهدة الفيديو على يوتيوب</p>
-            </div>
-            <div class="video-actions">
-              <p class="video-note"><b>فيديو حقيقي مدمج بالموقع</b> — يعمل بدون إنترنت بتعليق صوتي عربي وترجمة نصية قابلة للعرض، مع خيارات للجودة والسرعة والتكرار والتحميل. ويبقى الباركود موجهاً لنسخة يوتيوب لمن يفضل المشاهدة من جواله.</p>
+          <div class="qr-center">
+            <div class="qr-box qr-big">
+              <img src="images/qr-video.png" alt="باركود فيديو شرح أمانك">
+              <p class="qr-label">امسحي الباركود بكاميرا الجوال لمشاهدة الفيديو مباشرة على يوتيوب</p>
             </div>
           </div>
         </section>
 
-                <!-- ===== معرض الصور ===== -->
+        <!-- ===== الأيقونات قبل وبعد التعديل ===== -->
         <section class="gallery-card" data-animate>
           <div class="video-head">
             <div class="video-head-icon gallery-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3"/><path d="m6.7 6.7-2.2-2.2"/><path d="M3 12h3"/><path d="m6.7 17.3-2.2 2.2"/><path d="M21 12h-3"/><path d="m17.3 17.3 2.2 2.2"/><path d="M18 12a6 6 0 1 1-12 0 6 6 0 0 1 12 0Z"/></svg>
             </div>
             <div>
-              <h3 class="link-card-title">معرض أمانك</h3>
-              <p class="link-card-sub">صور توضيحية لمميزات الموقع — اضغط أي صورة لتكبيرها</p>
+              <h3 class="link-card-title">الأيقونات قبل وبعد التعديل</h3>
+              <p class="link-card-sub">مقارنة الأيقونات المطلوبة — النسخة المعدّلة في الأعلى والأصلية في الأسفل</p>
             </div>
           </div>
 
-          <div class="gallery-grid" id="galleryGrid">
-            <figure class="gallery-item">
-              <img src="images/gallery-family.png" alt="حماية شاملة للعائلة" loading="lazy">
-              <figcaption>حماية شاملة للعائلة</figcaption>
-            </figure>
-            <figure class="gallery-item">
-              <img src="images/gallery-apps.png" alt="تقييم التطبيقات الآمنة والخطرة" loading="lazy">
-              <figcaption>تقييم التطبيقات الآمنة والخطرة</figcaption>
-            </figure>
-            <figure class="gallery-item">
-              <img src="images/gallery-monitor.png" alt="مراقبة نشاط الأطفال لحظياً" loading="lazy">
-              <figcaption>مراقبة نشاط الأطفال لحظياً</figcaption>
-            </figure>
-            <figure class="gallery-item">
-              <img src="images/gallery-camera.png" alt="كاميرا مراقبة ذكية" loading="lazy">
-              <figcaption>كاميرا مراقبة ذكية</figcaption>
-            </figure>
-            <figure class="gallery-item">
-              <img src="images/gallery-privacy.png" alt="تشفير وخصوصية تامة" loading="lazy">
-              <figcaption>تشفير وخصوصية تامة</figcaption>
-            </figure>
-            <figure class="gallery-item">
-              <img src="images/hero-shield.png" alt="درع أمانك الواقي" loading="lazy">
-              <figcaption>درع أمانك الواقي</figcaption>
-            </figure>
+          <!-- 🖼️ استبدلي الصور البديلة بصور الأيقونات الحقيقية قبل/بعد التعديل -->
+          <div class="compare-wrap">
+            <div class="compare-pair">
+              <figure class="compare-item">
+                <span class="compare-badge after">بعد التعديل</span>
+                <img src="images/icon-after-1.svg" alt="درع أمانك بعد التعديل" loading="lazy">
+                <figcaption>درع أمانك</figcaption>
+              </figure>
+              <figure class="compare-item">
+                <span class="compare-badge before">قبل التعديل</span>
+                <img src="images/icon-before-1.svg" alt="درع أمانك قبل التعديل" loading="lazy">
+                <figcaption>درع أمانك</figcaption>
+              </figure>
+            </div>
+
+            <div class="compare-pair">
+              <figure class="compare-item">
+                <span class="compare-badge after">بعد التعديل</span>
+                <img src="images/icon-after-2.svg" alt="أيقونة المعرض بعد التعديل" loading="lazy">
+                <figcaption>أيقونة المعرض</figcaption>
+              </figure>
+              <figure class="compare-item">
+                <span class="compare-badge before">قبل التعديل</span>
+                <img src="images/icon-before-2.svg" alt="أيقونة المعرض قبل التعديل" loading="lazy">
+                <figcaption>أيقونة المعرض</figcaption>
+              </figure>
+            </div>
           </div>
         </section>
 
@@ -237,6 +201,12 @@
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
             </span>
             <span class="nav-label">الكاميرا</span>
+          </a>
+          <a class="nav-item" href="tasks.html">
+            <span class="nav-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg>
+            </span>
+            <span class="nav-label">المهام</span>
           </a>
         </div>
       </div>

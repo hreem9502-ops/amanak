@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="640" viewBox="0 0 800 640">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F1EFFF"/>
+      <stop offset="1" stop-color="#E4E0FB"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="792" height="632" rx="28" fill="url(#bg)" stroke="#4F41D6" stroke-width="3" stroke-dasharray="14 10" stroke-linecap="round"/>
+  <g transform="translate(400, 230)" fill="none" stroke="#4F41D6" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.85">
+    <path d="M32 6 L52 14 v14 c0 13-8.5 21-20 26 C20.5 49 12 41 12 28 V14 Z"/>
+  </g>
+  <text x="400" y="375" text-anchor="middle" font-family="Tajawal, 'Segoe UI', Tahoma, sans-serif" font-size="38" font-weight="700" fill="#3B32A0" direction="rtl">الأيقونة بعد التعديل</text>
+  <text x="400" y="425" text-anchor="middle" font-family="Tajawal, 'Segoe UI', Tahoma, sans-serif" font-size="24" font-weight="500" fill="#6A5FD0" direction="rtl">درع أمانك — النسخة المعدّلة</text>
+</svg>
