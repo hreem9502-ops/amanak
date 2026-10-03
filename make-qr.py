@@ -9,8 +9,8 @@
 import qrcode
 from qrcode.constants import ERROR_CORRECT_M
 
-# ⚠️ ضع رابط الفيديو الحقيقي هنا (يوتيوب أو غيره)
-VIDEO_URL = "https://www.youtube.com/watch?v=aXV-nXBh8f8"  # رابط تجريبي — استبدله برابط فيديو الشرح الخاص بك
+# ✔️ رابط صفحة الفيديو على الموقع — الباركود يوصل مباشرة لصفحة تشغيل الفيديو الحقيقي
+VIDEO_URL = "https://hreem9502-ops.github.io/amanak/video.html"
 
 # ألوان متناسقة مع هوية أمانك
 FILL_COLOR = "#4F41D6"   # البنفسجي الأساسي للموقع

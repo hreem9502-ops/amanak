@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>فيديو شرح البرنامج | أمانك</title>
+  <meta name="description" content="فيديو شرح برنامج أمانك — صفحة العرض المباشرة للفيديو عند مسح الباركود">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%234F41D6'/%3E%3Ctext x='32' y='45' font-size='36' font-weight='bold' text-anchor='middle' fill='white' font-family='Tajawal, Arial, sans-serif'%3Eأ%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .video-stage { background: #0f0d2e; border-radius: 1rem; overflow: hidden; box-shadow: 0 12px 32px rgba(79,65,214,.25); }
+    .video-stage video { display: block; width: 100%; aspect-ratio: 16/9; background: #0f0d2e; }
+    .video-tools { display: flex; gap: .6rem; flex-wrap: wrap; justify-content: center; margin-top: 1rem; }
+    .video-btn { display: inline-flex; align-items: center; gap: .45rem; padding: .65rem 1.1rem; border-radius: .75rem; font-weight: 700; font-size: .9rem; text-decoration: none; border: 1.5px solid #4F41D6; color: #4F41D6; background: #fff; transition: .2s; }
+    .video-btn:hover { background: #4F41D6; color: #fff; }
+    .video-btn.solid { background: #4F41D6; color: #fff; }
+    .video-btn.solid:hover { background: #3d31b8; }
+    .qr-hint { text-align: center; color: #64748B; font-size: .85rem; margin-top: 1.2rem; }
+  </style>
+</head>
+<body>
+
+<div class="page-wrap">
+  <main class="page-content">
+
+    <!-- ===== الترويسة ===== -->
+    <div class="page-header primary-grad">
+      <div class="container">
+        <a class="back-link" href="index.html">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          الرئيسية
+        </a>
+        <div data-animate>
+          <h1 class="page-title">فيديو شرح البرنامج</h1>
+          <p class="page-subtitle">شغّلي الفيديو مباشرة من هنا — وصلتِ لهذه الصفحة بمسح الباركود</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container" style="padding-bottom:2.5rem;">
+
+      <!-- ===== المشغل ===== -->
+      <section class="video-card" data-animate style="margin-top:1rem;">
+        <div class="video-head">
+          <div class="video-head-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 8-6 4 6 4V8Z"/><rect width="14" height="12" x="2" y="6" rx="2"/></svg>
+          </div>
+          <div>
+            <h3 class="link-card-title">شرح برنامج أمانك</h3>
+            <p class="link-card-sub">فيديو تعريفي بالبرنامج — مع تعليق صوتي وترجمة نصية عربية</p>
+          </div>
+          <span class="badge emerald">الفيديو الرسمي</span>
+        </div>
+
+        <div class="video-stage">
+          <video id="amanakVideo" controls playsinline preload="metadata" poster="images/video-poster.png">
+            <source src="media/amanak-intro-1080p.mp4" type="video/mp4">
+            متصفحك لا يدعم تشغيل الفيديو — حمّليه من الزر بالأسفل.
+          </video>
+        </div>
+
+        <div class="video-tools">
+          <a class="video-btn solid" href="media/amanak-intro-1080p.mp4" download="amanak-intro.mp4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>
+            تحميل الفيديو (1080p)
+          </a>
+          <a class="video-btn" href="media/amanak-intro-720p.mp4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+            نسخة خفيفة (720p)
+          </a>
+        </div>
+
+        <p class="qr-hint">هذه الصفحة مرتبطة بباركود الفيديو الموجود في ملف المشروع — يعمل الفيديو هنا مباشرة بدون يوتيوب.</p>
+      </section>
+
+    </div>
+  </main>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
