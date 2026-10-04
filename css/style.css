@@ -1525,3 +1525,163 @@ img { max-width: 100%; display: block; }
   .compare-pair { grid-template-columns: 1fr; }
   .qr-box.qr-big { width: 10rem; }
 }
+
+/* =========================================================
+   إضافات — الفيديو المدمج بالرئيسية + أقسام التقييم في سجل المهام
+   ========================================================= */
+
+/* ---------- مشغل الفيديو المدمج ---------- */
+.video-stage {
+  background: #0f0d2e;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 12px 32px rgba(79, 65, 214, 0.18);
+}
+.video-stage video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #0f0d2e;
+}
+.video-home-note {
+  margin-top: 0.75rem;
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--muted-foreground);
+  line-height: 1.7;
+}
+
+/* ---------- جدول مشاهد السيناريو ---------- */
+.scene-table-wrap {
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  overflow-x: auto;
+  background: #fff;
+}
+.scene-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+  min-width: 480px;
+}
+.scene-table th {
+  background: rgba(79, 65, 214, 0.08);
+  color: var(--primary);
+  font-weight: 800;
+  padding: 0.6rem 0.75rem;
+  text-align: right;
+  border-bottom: 2px solid rgba(79, 65, 214, 0.25);
+  white-space: nowrap;
+}
+.scene-table td {
+  padding: 0.55rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  color: var(--foreground);
+  line-height: 1.7;
+}
+.scene-table tr:last-child td { border-bottom: none; }
+.scene-table td.scene-no {
+  font-weight: 800;
+  color: var(--primary);
+  white-space: nowrap;
+  text-align: center;
+}
+.scene-table td.scene-time {
+  font-weight: 700;
+  color: #64748B;
+  white-space: nowrap;
+  text-align: center;
+  direction: ltr;
+}
+.scene-table tr.scene-close td { background: rgba(16, 185, 129, 0.05); }
+
+/* ---------- خطوات المعالجة (برامج الفيديو/الصوت/الصور) ---------- */
+.prog-subtitle {
+  margin-top: 1rem;
+  margin-bottom: 0.55rem;
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: var(--foreground);
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+.prog-subtitle::before {
+  content: "";
+  width: 0.28rem;
+  height: 1rem;
+  border-radius: 999px;
+  background: var(--primary);
+  display: inline-block;
+}
+.prog-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.9rem;
+}
+.prog-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  background: rgba(79, 65, 214, 0.04);
+  border: 1px solid var(--border);
+  border-radius: 0.65rem;
+  padding: 0.6rem 0.75rem;
+}
+.prog-step-no {
+  flex-shrink: 0;
+  width: 1.5rem; height: 1.5rem;
+  border-radius: 999px;
+  background: var(--primary);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.1rem;
+}
+.prog-step-text {
+  font-size: 0.82rem;
+  line-height: 1.7;
+  color: var(--foreground);
+}
+.prog-step-text b { color: var(--primary); }
+
+/* ---------- الشكل النهائي: شبكة لقطات الصفحات ---------- */
+.final-shots {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-top: 0.9rem;
+}
+.final-shots figure {
+  position: relative;
+  margin: 0;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  background: var(--secondary);
+}
+.final-shots img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  display: block;
+}
+.final-shots figcaption {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--muted-foreground);
+  padding: 0.45rem 0.6rem;
+  text-align: center;
+  background: #fff;
+  border-top: 1px solid var(--border);
+}
+.final-shots figcaption b { color: var(--primary); }
+
+@media (max-width: 560px) {
+  .final-shots { grid-template-columns: 1fr; }
+}

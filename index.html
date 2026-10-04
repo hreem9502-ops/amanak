@@ -94,7 +94,30 @@
           </div>
         </a>
 
-        <!-- ✔️ حُذف قسم باركود فيديو الشرح بناءً على الملاحظة — يُدرَج الباركود في ملف المشروع بدلاً من الموقع -->
+        <!-- ✔️ حُذف قسم باركود فيديو الشرح بناءً على الملاحظة — الباركود يُدرَج في ملف المشروع فقط ولا يُعرض في الموقع -->
+
+        <!-- ===== فيديو شرح البرنامج — مدمج في الموقع (بدون باركود) ===== -->
+        <section class="video-card" data-animate>
+          <div class="video-head">
+            <div class="video-head-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 8-6 4 6 4V8Z"/><rect width="14" height="12" x="2" y="6" rx="2"/></svg>
+            </div>
+            <div>
+              <h3 class="link-card-title">فيديو شرح البرنامج</h3>
+              <p class="link-card-sub">الفيديو التعريفي الرسمي بتطبيق أمانك — يُشاهد مباشرة من هنا</p>
+            </div>
+            <span class="badge emerald">الفيديو الرسمي</span>
+          </div>
+
+          <div class="video-stage">
+            <video controls playsinline preload="none" poster="images/video-poster.png">
+              <source src="media/amanak-intro-1080p.mp4" type="video/mp4">
+              متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+          </div>
+
+          <p class="video-home-note">مدة الفيديو دقيقة وثمان ثوانٍ — ويمكن مشاهدته أيضاً من صفحته الخاصة التي يفتحها مسح باركود الفيديو المدرَج في ملف المشروع المكتوب.</p>
+        </section>
 
         <!-- ===== الأيقونات قبل وبعد التعديل ===== -->
         <section class="gallery-card" data-animate>

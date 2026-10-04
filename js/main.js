@@ -4,8 +4,8 @@
    ========================================================= */
 
 // ---------- إعدادات عامة ----------
-// ⚠️ لتغيير رابط فيديو الشرح: عدّل الرابط هنا ثم أعد توليد الباركود (انظر README)
-var AMANAK_VIDEO_URL = 'https://www.youtube.com/watch?v=aXV-nXBh8f8';
+// رابط صفحة الفيديو الرسمية — هي التي يفتحها مسح باركود الفيديو المدرج في ملف المشروع
+var AMANAK_VIDEO_URL = 'https://hreem9502-ops.github.io/amanak/video.html';
 
 document.addEventListener('DOMContentLoaded', function () {
   // ---------- ظهور تدريجي للعناصر ----------
