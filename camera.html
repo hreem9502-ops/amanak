@@ -8,6 +8,15 @@
 <!-- 🎨 أيقونة التبويب: حرف (أ) — يمكن استبدالها لاحقاً بأيقونة الشعار النهائي -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%234F41D6'/%3E%3Ctext x='32' y='45' font-size='36' font-weight='bold' text-anchor='middle' fill='white' font-family='Tajawal, Arial, sans-serif'%3Eأ%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="css/style.css">
+  <script>
+    /* حماية الصفحات: تتطلب تسجيل الدخول وربط الأجهزة */
+    (function () {
+      try {
+        if (!localStorage.getItem('amanak_session')) { location.replace('login.html'); return; }
+        if (!localStorage.getItem('amanak_linked')) { location.replace('link-device.html'); }
+      } catch (e) { }
+    })();
+  </script>
 </head>
 <body>
 
@@ -126,11 +135,11 @@
             </span>
             <span class="nav-label">الكاميرا</span>
           </a>
-          <a class="nav-item" href="tasks.html">
+          <a class="nav-item" href="contact.html">
             <span class="nav-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg>
             </span>
-            <span class="nav-label">المهام</span>
+            <span class="nav-label">تواصل</span>
           </a>
         </div>
       </div>

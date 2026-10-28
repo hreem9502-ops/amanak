@@ -8,6 +8,14 @@
   <!-- 🎨 أيقونة التبويب: حرف (أ) — يمكن استبدالها لاحقاً بأيقونة الشعار النهائي -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%234F41D6'/%3E%3Ctext x='32' y='45' font-size='36' font-weight='bold' text-anchor='middle' fill='white' font-family='Tajawal, Arial, sans-serif'%3Eأ%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="css/style.css">
+  <script>
+    (function () {
+      try {
+        if (!localStorage.getItem('amanak_session')) { location.replace('login.html'); return; }
+        if (!localStorage.getItem('amanak_linked')) { location.replace('link-device.html'); }
+      } catch (e) { }
+    })();
+  </script>
 </head>
 <body>
 
@@ -18,7 +26,15 @@
     <!-- ✔ حُذفت أيقونة الدرع بناءً على الملاحظات — يبقى اسم أمانك والنص بعده فقط -->
     <section class="hero">
       <div class="hero-inner" data-animate>
-        <h1 class="hero-title">أمانك</h1>
+        <div class="user-chip" id="userChip" hidden>
+          <span class="user-avatar" id="userAvatar">أ</span>
+          <span class="user-welcome" id="welcomeName">مرحباً بك</span>
+          <button class="btn-logout" id="logoutBtn" type="button" title="تسجيل الخروج">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" x2="9" y1="12" y2="12"/></svg>
+            خروج
+          </button>
+        </div>
+                <h1 class="hero-title">أمانك</h1>
         <p class="hero-subtitle">حمايتك وحماية عائلتك بسرية وأمان تامَّين</p>
       </div>
 
@@ -33,6 +49,8 @@
     <!-- ===== بطاقات الأقسام ===== -->
     <div class="container">
       <div class="home-cards">
+
+        <div class="feature-grid">
 
         <a class="feature-card emerald" href="app-safety.html" data-animate>
           <div class="feature-card-inner">
@@ -74,29 +92,14 @@
         </a>
 
         <!-- 🖼️ صورة توضيحية جاهزة للأقسام (اختياري): احذف علامات التعليق لعرضها -->
-        <!--
-        <div style="border-radius:1rem; overflow:hidden; border:1px solid var(--border);">
-          <img src="images/apps-illustration.png" alt="التطبيقات الآمنة والخطرة">
-        </div>
-        -->
 
         <!-- ===== بطاقة سجل المهام ===== -->
-        <a class="feature-card emerald" href="tasks.html" data-animate>
-          <div class="feature-card-inner">
-            <div class="feature-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg>
-            </div>
-            <div class="feature-text">
-              <h3 class="feature-title">سجل المهام</h3>
-              <p class="feature-desc">تصميم الشعار وتنفيذه والتسجيلات قبل وبعد التعديل</p>
-            </div>
-            <svg class="feature-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-          </div>
-        </a>
 
         <!-- ✔️ حُذف قسم باركود فيديو الشرح بناءً على الملاحظة — الباركود يُدرَج في ملف المشروع فقط ولا يُعرض في الموقع -->
 
         <!-- ===== فيديو شرح البرنامج — مدمج في الموقع (بدون باركود) ===== -->
+        </div><!-- /feature-grid -->
+
         <section class="video-card" data-animate>
           <div class="video-head">
             <div class="video-head-icon">
@@ -116,50 +119,9 @@
             </video>
           </div>
 
-          <p class="video-home-note">مدة الفيديو دقيقة وثمان ثوانٍ — ويمكن مشاهدته أيضاً من صفحته الخاصة التي يفتحها مسح باركود الفيديو المدرَج في ملف المشروع المكتوب.</p>
+          <p class="video-home-note">مدة الفيديو دقيقة وثمان ثوانٍ — الفيديو التعريفي الرسمي لتطبيق أمانك.</p>
         </section>
 
-        <!-- ===== الأيقونات قبل وبعد التعديل ===== -->
-        <section class="gallery-card" data-animate>
-          <div class="video-head">
-            <div class="video-head-icon gallery-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3"/><path d="m6.7 6.7-2.2-2.2"/><path d="M3 12h3"/><path d="m6.7 17.3-2.2 2.2"/><path d="M21 12h-3"/><path d="m17.3 17.3 2.2 2.2"/><path d="M18 12a6 6 0 1 1-12 0 6 6 0 0 1 12 0Z"/></svg>
-            </div>
-            <div>
-              <h3 class="link-card-title">الأيقونات قبل وبعد التعديل</h3>
-              <p class="link-card-sub">مقارنة الأيقونات المطلوبة — النسخة المعدّلة في الأعلى والأصلية في الأسفل</p>
-            </div>
-          </div>
-
-          <!-- ✔️ تصميم الأيقونات قبل وبعد التعديل — نُفِّذت عبر Canva -->
-          <div class="compare-wrap">
-            <div class="compare-pair">
-              <figure class="compare-item">
-                <span class="compare-badge after">بعد التعديل</span>
-                <img src="images/icon-after-1.png" alt="درع أمانك بعد التعديل" loading="lazy">
-                <figcaption>درع أمانك</figcaption>
-              </figure>
-              <figure class="compare-item">
-                <span class="compare-badge before">قبل التعديل</span>
-                <img src="images/icon-before-1.png" alt="درع أمانك قبل التعديل" loading="lazy">
-                <figcaption>درع أمانك</figcaption>
-              </figure>
-            </div>
-
-            <div class="compare-pair">
-              <figure class="compare-item">
-                <span class="compare-badge after">بعد التعديل</span>
-                <img src="images/icon-after-2.png" alt="أيقونة الكاميرا بعد التعديل" loading="lazy">
-                <figcaption>أيقونة المعرض</figcaption>
-              </figure>
-              <figure class="compare-item">
-                <span class="compare-badge before">قبل التعديل</span>
-                <img src="images/icon-before-2.png" alt="أيقونة الكاميرا قبل التعديل" loading="lazy">
-                <figcaption>أيقونة المعرض</figcaption>
-              </figure>
-            </div>
-          </div>
-        </section>
 
         <!-- ===== بطاقة الخصوصية ===== -->
         <div class="privacy-card" data-animate>
@@ -206,11 +168,11 @@
             </span>
             <span class="nav-label">الكاميرا</span>
           </a>
-          <a class="nav-item" href="tasks.html">
+          <a class="nav-item" href="contact.html">
             <span class="nav-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg>
             </span>
-            <span class="nav-label">المهام</span>
+            <span class="nav-label">تواصل</span>
           </a>
         </div>
       </div>

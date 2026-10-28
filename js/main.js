@@ -19,6 +19,13 @@ document.addEventListener('DOMContentLoaded', function () {
   initCamera();
   initVideoSection();
   initGallery();
+  initLoginPage();
+  initLinkDevicePage();
+  initLogoutButtons();
+  initWelcomeChip();
+  initFeatureToggles();
+  initLinkedStatus();
+  initContactForm();
 });
 
 /* =========================================================
@@ -487,5 +494,306 @@ function initGallery() {
     if (e.key === 'Escape') close();
     else if (e.key === 'ArrowLeft') show(current + 1);   // التالي في RTL
     else if (e.key === 'ArrowRight') show(current - 1);  // السابق في RTL
+  });
+}
+
+/* =========================================================
+   نظام الحسابات — تسجيل الدخول وإنشاء الحساب (تجريبي محلي)
+   ========================================================= */
+
+var AMANAK_PHONE_RE = /^05\d{8}$/;
+
+function amanakGetUsers() {
+  try { return JSON.parse(localStorage.getItem('amanak_users') || '{}'); }
+  catch (e) { return {}; }
+}
+
+function amanakSaveUsers(users) {
+  localStorage.setItem('amanak_users', JSON.stringify(users));
+}
+
+function amanakGetUser() {
+  try { return JSON.parse(localStorage.getItem('amanak_user') || 'null'); }
+  catch (e) { return null; }
+}
+
+function amanakShowMsg(el, text, type) {
+  if (!el) return;
+  el.textContent = text;
+  el.className = 'auth-msg ' + (type || 'error');
+}
+
+function amanakToast(text) {
+  var toast = document.getElementById('toast');
+  if (!toast) return;
+  toast.textContent = text;
+  toast.classList.add('show');
+  setTimeout(function () { toast.classList.remove('show'); }, 3000);
+}
+
+/* ---------- صفحة تسجيل الدخول ---------- */
+function initLoginPage() {
+  var tabLogin = document.getElementById('tabLogin');
+  var tabSignup = document.getElementById('tabSignup');
+  var loginPanel = document.getElementById('loginPanel');
+  var signupPanel = document.getElementById('signupPanel');
+  if (!tabLogin || !loginPanel || !signupPanel) return;
+
+  var msg = document.getElementById('authMsg');
+
+  function switchTab(activeBtn, panel) {
+    [tabLogin, tabSignup].forEach(function (b) {
+      b.classList.remove('active');
+      b.setAttribute('aria-selected', 'false');
+    });
+    activeBtn.classList.add('active');
+    activeBtn.setAttribute('aria-selected', 'true');
+    loginPanel.classList.remove('active');
+    signupPanel.classList.remove('active');
+    panel.classList.add('active');
+    if (msg) { msg.className = 'auth-msg'; msg.textContent = ''; }
+  }
+
+  tabLogin.addEventListener('click', function () { switchTab(tabLogin, loginPanel); });
+  tabSignup.addEventListener('click', function () { switchTab(tabSignup, signupPanel); });
+
+  // تسجيل الدخول
+  loginPanel.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var phone = document.getElementById('loginPhone').value.trim();
+    var pass = document.getElementById('loginPass').value;
+
+    if (!AMANAK_PHONE_RE.test(phone)) {
+      amanakShowMsg(msg, 'الرجاء إدخال رقم جوال صحيح يبدأ بـ 05 ويتكون من 10 أرقام.', 'error');
+      return;
+    }
+    if (!pass) {
+      amanakShowMsg(msg, 'الرجاء إدخال كلمة المرور.', 'error');
+      return;
+    }
+
+    var users = amanakGetUsers();
+    if (!users[phone]) {
+      amanakShowMsg(msg, 'لا يوجد حساب بهذا الرقم — أنشئ حساباً جديداً من تبويب «إنشاء حساب».', 'error');
+      return;
+    }
+    if (users[phone].pass !== pass) {
+      amanakShowMsg(msg, 'كلمة المرور غير صحيحة، حاول مرة أخرى.', 'error');
+      return;
+    }
+
+    localStorage.setItem('amanak_session', '1');
+    localStorage.setItem('amanak_user', JSON.stringify(users[phone]));
+    amanakShowMsg(msg, 'تم تسجيل الدخول بنجاح — جارٍ المتابعة...', 'success');
+    setTimeout(function () { location.replace('link-device.html'); }, 700);
+  });
+
+  // إنشاء حساب
+  signupPanel.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = document.getElementById('signupName').value.trim();
+    var phone = document.getElementById('signupPhone').value.trim();
+    var pass = document.getElementById('signupPass').value;
+    var pass2 = document.getElementById('signupPass2').value;
+
+    if (name.length < 2) {
+      amanakShowMsg(msg, 'الرجاء إدخال الاسم.', 'error');
+      return;
+    }
+    if (!AMANAK_PHONE_RE.test(phone)) {
+      amanakShowMsg(msg, 'رقم الجوال يجب أن يبدأ بـ 05 ويتكون من 10 أرقام.', 'error');
+      return;
+    }
+    if (pass.length < 6) {
+      amanakShowMsg(msg, 'كلمة المرور يجب أن تكون 6 أحرف على الأقل.', 'error');
+      return;
+    }
+    if (pass !== pass2) {
+      amanakShowMsg(msg, 'كلمتا المرور غير متطابقتين.', 'error');
+      return;
+    }
+
+    var users = amanakGetUsers();
+    if (users[phone]) {
+      amanakShowMsg(msg, 'هذا الرقم مسجل مسبقاً — سجّل دخولك من التبويب الأول.', 'error');
+      return;
+    }
+
+    var user = { name: name, phone: phone, pass: pass, createdAt: new Date().toISOString() };
+    users[phone] = user;
+    amanakSaveUsers(users);
+    localStorage.setItem('amanak_session', '1');
+    localStorage.setItem('amanak_user', JSON.stringify(user));
+    amanakShowMsg(msg, 'تم إنشاء الحساب بنجاح — جارٍ المتابعة...', 'success');
+    setTimeout(function () { location.replace('link-device.html'); }, 700);
+  });
+}
+
+/* ---------- صفحة ربط الأجهزة ---------- */
+function initLinkDevicePage() {
+  var form = document.getElementById('linkForm');
+  var parentInput = document.getElementById('parentPhone');
+  var childInput = document.getElementById('childPhone');
+  var parentBox = document.getElementById('parentBox');
+  var childBox = document.getElementById('childBox');
+  var submitBtn = document.getElementById('linkDevicesBtn');
+  var msg = document.getElementById('linkMsg');
+  var okBox = document.getElementById('devicesOk');
+  if (!form || !parentInput || !childInput || !submitBtn) return;
+
+  function refresh() {
+    parentBox.classList.toggle('filled', AMANAK_PHONE_RE.test(parentInput.value.trim()));
+    childBox.classList.toggle('filled', AMANAK_PHONE_RE.test(childInput.value.trim()));
+    submitBtn.disabled = !(AMANAK_PHONE_RE.test(parentInput.value.trim()) &&
+                           AMANAK_PHONE_RE.test(childInput.value.trim()));
+  }
+
+  parentInput.addEventListener('input', function () {
+    refresh();
+    if (msg) { msg.className = 'auth-msg'; }
+  });
+  childInput.addEventListener('input', refresh);
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var parent = parentInput.value.trim();
+    var child = childInput.value.trim();
+
+    if (!AMANAK_PHONE_RE.test(parent)) {
+      amanakShowMsg(msg, 'أدخل رقم جوال ولي الأمر بشكل صحيح (05xxxxxxxx).', 'error');
+      return;
+    }
+    if (!AMANAK_PHONE_RE.test(child)) {
+      amanakShowMsg(msg, 'أدخل رقم جوال الطفل بشكل صحيح (05xxxxxxxx).', 'error');
+      return;
+    }
+    if (parent === child) {
+      amanakShowMsg(msg, 'رقم جوال الطفل يجب أن يختلف عن رقم جوال ولي الأمر.', 'error');
+      return;
+    }
+
+    localStorage.setItem('amanak_linked', JSON.stringify({
+      parent: parent,
+      child: child,
+      linkedAt: new Date().toISOString()
+    }));
+
+    if (msg) { msg.className = 'auth-msg'; }
+    if (okBox) okBox.classList.add('show');
+    submitBtn.disabled = true;
+    setTimeout(function () { location.replace('index.html'); }, 1400);
+  });
+}
+
+/* ---------- زر تسجيل الخروج ---------- */
+function initLogoutButtons() {
+  document.querySelectorAll('.btn-logout').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      localStorage.removeItem('amanak_session');
+      localStorage.removeItem('amanak_user');
+      localStorage.removeItem('amanak_linked');
+      location.replace('login.html');
+    });
+  });
+}
+
+/* ---------- بطاقة الترحيب في الرئيسية ---------- */
+function initWelcomeChip() {
+  var chip = document.getElementById('userChip');
+  if (!chip) return;
+  var user = amanakGetUser();
+  var nameEl = document.getElementById('welcomeName');
+  var avatarEl = document.getElementById('userAvatar');
+  if (nameEl) {
+    nameEl.textContent = user && user.name ? ('مرحباً، ' + user.name) : 'مرحباً بك';
+  }
+  if (avatarEl) {
+    avatarEl.textContent = user && user.name ? user.name.trim().charAt(0) : 'أ';
+  }
+  chip.hidden = false;
+}
+
+/* ---------- مفاتيح تفعيل المميزات (صفحة طفلك) ---------- */
+function initFeatureToggles() {
+  var toggles = document.querySelectorAll('.feat-toggle input[data-feature]');
+  if (!toggles.length) return;
+
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem('amanak_features') || '{}'); }
+  catch (e) { saved = {}; }
+
+  toggles.forEach(function (input) {
+    var key = input.getAttribute('data-feature');
+    var card = input.closest('.upcoming-card');
+
+    // استعادة الحالة المحفوظة (الافتراضي: مفعّلة)
+    if (saved.hasOwnProperty(key)) {
+      input.checked = !!saved[key];
+    }
+    if (card) {
+      card.classList.toggle('feat-off', !input.checked);
+    }
+
+    input.addEventListener('change', function () {
+      saved[key] = input.checked;
+      localStorage.setItem('amanak_features', JSON.stringify(saved));
+      if (card) {
+        card.classList.toggle('feat-off', !input.checked);
+      }
+      amanakToast(input.checked ? 'تم تفعيل الميزة' : 'تم إيقاف الميزة');
+    });
+  });
+}
+
+/* ---------- عرض الأجهزة المرتبطة (صفحة طفلك) ---------- */
+function initLinkedStatus() {
+  var box = document.getElementById('linkedNums');
+  if (!box) return;
+  var linked = null;
+  try { linked = JSON.parse(localStorage.getItem('amanak_linked') || 'null'); }
+  catch (e) { linked = null; }
+
+  if (linked && linked.parent && linked.child) {
+    box.innerHTML = 'جوال ولي الأمر: <b dir="ltr">' + linked.parent + '</b><br>' +
+                    'جوال الطفل: <b dir="ltr">' + linked.child + '</b>';
+    box.classList.add('show');
+  }
+}
+
+/* ---------- نموذج التواصل + التنبيه العائم ---------- */
+function initContactForm() {
+  var form = document.getElementById('contactForm');
+  if (!form) return;
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = document.getElementById('contactName');
+    var text = document.getElementById('contactText');
+
+    if (!name || !name.value.trim()) {
+      amanakToast('الرجاء كتابة اسمك أولاً');
+      if (name) name.focus();
+      return;
+    }
+    if (!text || !text.value.trim()) {
+      amanakToast('الرجاء كتابة رسالتك قبل الإرسال');
+      if (text) text.focus();
+      return;
+    }
+
+    // حفظ الرسالة محلياً (نسخة تجريبية)
+    var messages = [];
+    try { messages = JSON.parse(localStorage.getItem('amanak_messages') || '[]'); }
+    catch (err) { messages = []; }
+    messages.push({
+      name: name.value.trim(),
+      text: text.value.trim(),
+      at: new Date().toISOString()
+    });
+    localStorage.setItem('amanak_messages', JSON.stringify(messages));
+
+    amanakToast('تم إرسال رسالتك بنجاح — شكراً لتواصلك معنا');
+    name.value = '';
+    text.value = '';
   });
 }
