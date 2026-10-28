@@ -206,7 +206,8 @@ img { max-width: 100%; display: block; }
   color: var(--primary);
 }
 .hero-title {
-  font-size: 3rem;
+  /* حجم سائل يتدرج تلقائياً مع عرض الشاشة (هاتف ← لوحي ← كمبيوتر) */
+  font-size: clamp(2.4rem, 3vw + 1.4rem, 3.25rem);
   font-weight: 900;
   letter-spacing: -0.025em;
   margin-bottom: 0.75rem;
@@ -354,7 +355,8 @@ img { max-width: 100%; display: block; }
 }
 .back-link:hover { color: var(--foreground); }
 .page-title {
-  font-size: 1.5rem;
+  /* حجم سائل يتدرج مع عرض الشاشة */
+  font-size: clamp(1.35rem, 1vw + 1.1rem, 2rem);
   font-weight: 900;
   margin-bottom: 0.5rem;
 }
@@ -1100,7 +1102,6 @@ img { max-width: 100%; display: block; }
 
 /* ---------- استجابة الشاشات ---------- */
 @media (max-width: 480px) {
-  .hero-title { font-size: 2.5rem; }
   .video-row { flex-direction: column; }
   .qr-box { width: 100%; max-width: 10rem; margin-inline: auto; }
   .video-actions { align-items: stretch; }
@@ -2110,6 +2111,20 @@ img { max-width: 100%; display: block; }
 
 /* أجهزة لوحية متوسطة */
 @media (min-width: 640px) {
+  /* توسيع الحاوية لملء الشاشات اللوحية بشكل متوازن */
+  .container { max-width: 42rem; }
+  /* بطاقات الرئيسية: عمودان على اللوحية ثم ثلاثة على الكمبيوتر */
+  .feature-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+  /* البطاقة الثالثة تمتد بكامل الصف حتى لا يبقى فراغ بجانبها */
+  .feature-grid .feature-card.accent { grid-column: 1 / -1; }
+  /* عناصر صفحة الكاميرا تستفيد من العرض على اللوحية */
+  .camera-view,
+  .camera-controls,
+  .howto-card { max-width: 40rem; margin-inline: auto; width: 100%; }
   .upcoming-grid { grid-template-columns: repeat(3, 1fr); }
   .app-list {
     display: grid;
@@ -2124,7 +2139,6 @@ img { max-width: 100%; display: block; }
 @media (min-width: 1024px) {
   .container { max-width: 64rem; }
   .hero { padding: 4.5rem 1.5rem 3rem; }
-  .hero-title { font-size: 3.25rem; }
   .hero-subtitle { font-size: 1.15rem; }
   .page-content { padding-bottom: 7.5rem; }
   .feature-grid {
@@ -2132,6 +2146,7 @@ img { max-width: 100%; display: block; }
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
   }
+  .feature-grid .feature-card.accent { grid-column: auto; }
   .home-cards { gap: 1rem; }
   .video-card, .gallery-card, .privacy-card { grid-column: 1 / -1; }
   .video-card { max-width: 52rem; margin-inline: auto; width: 100%; }
@@ -2139,7 +2154,6 @@ img { max-width: 100%; display: block; }
   .camera-view { max-width: 46rem; margin-inline: auto; }
   .camera-controls { max-width: 46rem; margin-inline: auto; width: 100%; }
   .howto-card { max-width: 46rem; margin-inline: auto; width: 100%; }
-  .page-title { font-size: 2rem; }
   .page-subtitle { font-size: 1rem; }
   .auth-card { max-width: 27rem; }
   .auth-card.wide { max-width: 32rem; }
@@ -2171,4 +2185,32 @@ img { max-width: 100%; display: block; }
 /* دعم الشاشات الآمنة (آيفون) */
 .bottom-nav-inner {
   margin-bottom: calc(1rem + env(safe-area-inset-bottom, 0rem));
+}
+
+/* ---------- الهاتف بالوضع الأفقي — ملاءمة الشاشات القصيرة ---------- */
+@media (max-height: 500px) and (orientation: landscape) {
+  .auth-body { align-items: flex-start; padding: 0.75rem 1rem 1rem; }
+  .auth-card { padding: 0.9rem 1.4rem; }
+  .auth-logo { width: 2.5rem; height: 2.5rem; margin-bottom: 0.4rem; border-radius: 0.8rem; }
+  .auth-logo svg { width: 22px; height: 22px; }
+  .auth-title { font-size: 1.05rem; }
+  .auth-sub { margin-bottom: 0.55rem; font-size: 0.7rem; }
+  .auth-tabs { margin-bottom: 0.55rem; }
+  .auth-tab { height: 2.1rem; font-size: 0.78rem; }
+  .auth-form { gap: 0.45rem; }
+  .auth-field label { font-size: 0.72rem; margin-bottom: 0.2rem; }
+  .auth-input { height: 2.25rem; font-size: 0.82rem; }
+  .auth-btn { height: 2.25rem; font-size: 0.82rem; }
+  /* في الوضع الأفقي: إبقاء زر الخروج ظاهراً مع تقليص الهوامش وإخفاء الملاحظات الثانوية */
+  .auth-footer { margin-top: 0.4rem; }
+  .auth-note { display: none; }
+  .auth-sub { display: none; }
+  .device-sub { display: none; }
+  .devices-row { margin: 0.6rem 0; }
+  .device-box { padding: 0.7rem 0.6rem; }
+  .device-icon { width: 2.25rem; height: 2.25rem; margin-bottom: 0.3rem; }
+  .device-icon svg { width: 20px; height: 20px; }
+  .device-input { height: 2.2rem; }
+  .hero { padding: 1.5rem 1.5rem 1.25rem; }
+  .step-badge { margin-bottom: 0.4rem; }
 }
