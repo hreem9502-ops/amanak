@@ -502,6 +502,7 @@ function initGallery() {
    ========================================================= */
 
 var AMANAK_PHONE_RE = /^05\d{8}$/;
+var AMANAK_EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 function amanakGetUsers() {
   try { return JSON.parse(localStorage.getItem('amanak_users') || '{}'); }
@@ -629,11 +630,11 @@ function initLoginPage() {
   });
 }
 
-/* ---------- صفحة ربط الأجهزة ---------- */
+/* ---------- صفحة ربط الأجهزة (بالبريد الإلكتروني) ---------- */
 function initLinkDevicePage() {
   var form = document.getElementById('linkForm');
-  var parentInput = document.getElementById('parentPhone');
-  var childInput = document.getElementById('childPhone');
+  var parentInput = document.getElementById('parentEmail');
+  var childInput = document.getElementById('childEmail');
   var parentBox = document.getElementById('parentBox');
   var childBox = document.getElementById('childBox');
   var submitBtn = document.getElementById('linkDevicesBtn');
@@ -642,10 +643,10 @@ function initLinkDevicePage() {
   if (!form || !parentInput || !childInput || !submitBtn) return;
 
   function refresh() {
-    parentBox.classList.toggle('filled', AMANAK_PHONE_RE.test(parentInput.value.trim()));
-    childBox.classList.toggle('filled', AMANAK_PHONE_RE.test(childInput.value.trim()));
-    submitBtn.disabled = !(AMANAK_PHONE_RE.test(parentInput.value.trim()) &&
-                           AMANAK_PHONE_RE.test(childInput.value.trim()));
+    parentBox.classList.toggle('filled', AMANAK_EMAIL_RE.test(parentInput.value.trim()));
+    childBox.classList.toggle('filled', AMANAK_EMAIL_RE.test(childInput.value.trim()));
+    submitBtn.disabled = !(AMANAK_EMAIL_RE.test(parentInput.value.trim()) &&
+                           AMANAK_EMAIL_RE.test(childInput.value.trim()));
   }
 
   parentInput.addEventListener('input', function () {
@@ -659,16 +660,16 @@ function initLinkDevicePage() {
     var parent = parentInput.value.trim();
     var child = childInput.value.trim();
 
-    if (!AMANAK_PHONE_RE.test(parent)) {
-      amanakShowMsg(msg, 'أدخل رقم جوال ولي الأمر بشكل صحيح (05xxxxxxxx).', 'error');
+    if (!AMANAK_EMAIL_RE.test(parent)) {
+      amanakShowMsg(msg, 'أدخل البريد الإلكتروني لولي الأمر بشكل صحيح (مثال: name@example.com).', 'error');
       return;
     }
-    if (!AMANAK_PHONE_RE.test(child)) {
-      amanakShowMsg(msg, 'أدخل رقم جوال الطفل بشكل صحيح (05xxxxxxxx).', 'error');
+    if (!AMANAK_EMAIL_RE.test(child)) {
+      amanakShowMsg(msg, 'أدخل البريد الإلكتروني للطفل بشكل صحيح (مثال: name@example.com).', 'error');
       return;
     }
     if (parent === child) {
-      amanakShowMsg(msg, 'رقم جوال الطفل يجب أن يختلف عن رقم جوال ولي الأمر.', 'error');
+      amanakShowMsg(msg, 'البريد الإلكتروني للطفل يجب أن يختلف عن بريد ولي الأمر.', 'error');
       return;
     }
 
@@ -754,8 +755,8 @@ function initLinkedStatus() {
   catch (e) { linked = null; }
 
   if (linked && linked.parent && linked.child) {
-    box.innerHTML = 'جوال ولي الأمر: <b dir="ltr">' + linked.parent + '</b><br>' +
-                    'جوال الطفل: <b dir="ltr">' + linked.child + '</b>';
+    box.innerHTML = 'بريد ولي الأمر الإلكتروني: <b dir="ltr">' + linked.parent + '</b><br>' +
+                    'بريد الطفل الإلكتروني: <b dir="ltr">' + linked.child + '</b>';
     box.classList.add('show');
   }
 }
